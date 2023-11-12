@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TeduEcommerce.Attributes;
 using TeduEcommerce.Inventories;
 using TeduEcommerce.InventoryTickets;
 using TeduEcommerce.Manufacturers;
 using TeduEcommerce.Orders;
+using TeduEcommerce.ProductAttributes;
 using TeduEcommerce.ProductCategories;
 using TeduEcommerce.Products;
 using TeduEcommerce.Promotions;
@@ -60,7 +60,7 @@ public class TeduEcommerceDbContext :
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
     // Ecommerce
-    public DbSet<Attribute> Attributes { get; set; }
+    public DbSet<ProductAttribute> ProductAttributes { get; set; }
     public DbSet<Inventory> Inventories { get; set; }
     public DbSet<InventoryTicket> InventoryTickets { get; set; }
     public DbSet<InventoryTicketItem> InventoryTicketItems { get; set; }
@@ -109,6 +109,36 @@ public class TeduEcommerceDbContext :
         builder.ConfigureTenantManagement();
 
         /* Configure your own tables/entities inside here */
+        builder.ApplyConfiguration(new ProductAttributeConfiguration());
+
+        builder.ApplyConfiguration(new InventoryConfiguration());
+        builder.ApplyConfiguration(new InventoryTicketConfiguration());
+        builder.ApplyConfiguration(new InventoryTicketItemConfiguration());
+
+        builder.ApplyConfiguration(new ManufacturerConfiguration());
+
+        builder.ApplyConfiguration(new OrderConfiguration());
+        builder.ApplyConfiguration(new OrderItemConfiguration());
+        builder.ApplyConfiguration(new OrderTransactionConfiguration());
+
+        builder.ApplyConfiguration(new ProductCategoryConfiguration());
+
+        builder.ApplyConfiguration(new ProductConfiguration());
+        builder.ApplyConfiguration(new ProductLinkConfiguration());
+        builder.ApplyConfiguration(new ProductReviewConfiguration());
+        builder.ApplyConfiguration(new ProductTagConfiguration());
+        builder.ApplyConfiguration(new TagConfiguration());
+        builder.ApplyConfiguration(new ProductAttributeDateTimeConfiguration());
+        builder.ApplyConfiguration(new ProductAttributeDecimalConfiguration());
+        builder.ApplyConfiguration(new ProductAttributeIntConfiguration());
+        builder.ApplyConfiguration(new ProductAttributeTextConfiguration());
+        builder.ApplyConfiguration(new ProductAttributeVarcharConfiguration());
+
+        builder.ApplyConfiguration(new PromotionConfiguration());
+        builder.ApplyConfiguration(new PromotionCategoryConfiguration());
+        builder.ApplyConfiguration(new PromotionManufacturerConfiguration());
+        builder.ApplyConfiguration(new PromotionProductConfiguration());
+        builder.ApplyConfiguration(new PromotionUsageHistoryConfiguration());
 
         //builder.Entity<YourEntity>(b =>
         //{
