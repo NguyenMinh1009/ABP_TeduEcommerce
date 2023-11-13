@@ -7,6 +7,7 @@ using TeduEcommerce.Data;
 using Serilog;
 using Volo.Abp;
 using Volo.Abp.Data;
+using TeduEcommerce.Seeding;
 
 namespace TeduEcommerce.DbMigrator;
 
@@ -25,10 +26,9 @@ public class DbMigratorHostedService : IHostedService
     {
         using (var application = await AbpApplicationFactory.CreateAsync<TeduEcommerceDbMigratorModule>(options =>
         {
-           options.Services.ReplaceConfiguration(_configuration);
-           options.UseAutofac();
-           options.Services.AddLogging(c => c.AddSerilog());
-           options.AddDataMigrationEnvironment();
+            options.Services.ReplaceConfiguration(_configuration);
+            options.UseAutofac();
+            options.Services.AddLogging(c => c.AddSerilog());
         }))
         {
             await application.InitializeAsync();
@@ -37,6 +37,11 @@ public class DbMigratorHostedService : IHostedService
                 .ServiceProvider
                 .GetRequiredService<TeduEcommerceDbMigrationService>()
                 .MigrateAsync();
+
+            await application
+               .ServiceProvider
+               .GetRequiredService<IdentityDataSeeder>()
+               .SeedAsync("admin@tedu.com.vn", "Abc@123$");
 
             await application.ShutdownAsync();
 
