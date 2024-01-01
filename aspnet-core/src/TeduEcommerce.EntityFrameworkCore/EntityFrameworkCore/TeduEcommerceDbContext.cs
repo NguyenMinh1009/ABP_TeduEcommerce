@@ -58,7 +58,7 @@ public class TeduEcommerceDbContext :
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
-    // Ecommerce
+    //Ecommerce
     public DbSet<ProductAttribute> ProductAttributes { get; set; }
     public DbSet<Inventory> Inventories { get; set; }
     public DbSet<InventoryTicket> InventoryTickets { get; set; }
@@ -68,21 +68,22 @@ public class TeduEcommerceDbContext :
     public DbSet<OrderItem> OrderItems { get; set; }
     public DbSet<OrderTransaction> OrderTransactions { get; set; }
     public DbSet<ProductCategory> ProductCategories { get; set; }
+
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductAttributeDateTime> ProductAttributeDateTimes { get; set; }
     public DbSet<ProductAttributeDecimal> ProductAttributeDecimals { get; set; }
     public DbSet<ProductAttributeInt> ProductAttributeInts { get; set; }
-    public DbSet<ProductAttributeText> ProductAttributeTexts { get; set; }
     public DbSet<ProductAttributeVarchar> ProductAttributeVarchars { get; set; }
+    public DbSet<ProductAttributeText> ProductAttributeTexts { get; set; }
     public DbSet<ProductLink> ProductLinks { get; set; }
     public DbSet<ProductReview> ProductReviews { get; set; }
     public DbSet<ProductTag> ProductTags { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<Promotion> Promotions { get; set; }
+    public DbSet<PromotionCategory> PromotionCategories { get; set; }
     public DbSet<PromotionManufacturer> PromotionManufacturers { get; set; }
     public DbSet<PromotionProduct> PromotionProducts { get; set; }
     public DbSet<PromotionUsageHistory> PromotionUsageHistories { get; set; }
-
 
     #endregion
 
@@ -111,6 +112,7 @@ public class TeduEcommerceDbContext :
         builder.ApplyConfiguration(new ProductAttributeConfiguration());
 
         builder.ApplyConfiguration(new InventoryConfiguration());
+
         builder.ApplyConfiguration(new InventoryTicketConfiguration());
         builder.ApplyConfiguration(new InventoryTicketItemConfiguration());
 
@@ -139,11 +141,5 @@ public class TeduEcommerceDbContext :
         builder.ApplyConfiguration(new PromotionProductConfiguration());
         builder.ApplyConfiguration(new PromotionUsageHistoryConfiguration());
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(TeduEcommerceConsts.DbTablePrefix + "YourEntities", TeduEcommerceConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
     }
 }

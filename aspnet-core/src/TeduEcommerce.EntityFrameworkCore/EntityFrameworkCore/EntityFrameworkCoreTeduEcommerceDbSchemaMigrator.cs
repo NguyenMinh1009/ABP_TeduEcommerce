@@ -20,7 +20,7 @@ public class EntityFrameworkCoreTeduEcommerceDbSchemaMigrator
 
     public async Task MigrateAsync()
     {
-        /* We intentionally resolve the TeduEcommerceDbContext
+        /* We intentionally resolving the TeduEcommerceDbContext
          * from IServiceProvider (instead of directly injecting it)
          * to properly get the connection string of the current tenant in the
          * current scope.

@@ -19,11 +19,13 @@
 <div class="d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <abp-row>
+
             <div class="col mx-auto account-column">
                 <div class="account-brand p-4 text-center mb-1">
+
                     @if (!BrandingProvider.LogoUrl.IsNullOrEmpty())
                     {
-                        <a class="navbar-brand" href="~/" alt="@BrandingProvider.AppName"></a>
+                        <a class="navbar-brand" href="/" alt="@BrandingProvider.AppName"></a>
                     }
                     else
                     {
@@ -31,7 +33,9 @@
                     }
                 </div>
                 <abp-card>
+
                     <abp-card-body>
+
                         <div class="container">
                             <abp-row>
                                 <abp-column size="_9">
@@ -64,52 +68,52 @@
                                     <div class="ml-auto p-2 float-end">
                                         <abp-dropdown>
                                             <abp-dropdown-button text="@Model.CurrentLanguage" />
-                                            @if (@Model.Languages != null)
-                                            {
-                                                <abp-dropdown-menu>
-                                                    @foreach (var language in Model.Languages)
-                                                    {
-                                                        var languageUrl = Url.Content($"~/Abp/Languages/Switch?culture={language.CultureName}&uiCulture={language.UiCultureName}&returnUrl={System.Net.WebUtility.UrlEncode(Request.GetEncodedPathAndQuery())}");
-                                                        <abp-dropdown-item href="@languageUrl">@language.DisplayName</abp-dropdown-item>
-                                                    }
-                                                </abp-dropdown-menu>
-                                            }
+                                            <abp-dropdown-menu>
+                                                @foreach (var language in Model.Languages)
+                                                {
+                                                    <abp-dropdown-item href="~/Abp/Languages/Switch?culture=@(language.CultureName)&uiCulture=@(language.UiCultureName)&returnUrl=@(System.Net.WebUtility.UrlEncode(Request.GetEncodedPathAndQuery()))">@language.DisplayName</abp-dropdown-item>
+                                                }
+                                            </abp-dropdown-menu>
                                         </abp-dropdown>
                                     </div>
                                 </abp-column>
+
                             </abp-row>
                             <hr class="m-4" />
+
                             <abp-row>
-                                @if (Model.Applications != null)
+
+                                @foreach (var application in Model.Applications)
                                 {
-                                    foreach (var application in Model.Applications)
-                                    {
-                                        <abp-column size-md="@Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Grid.ColumnSize._4" class="mb-2">
-                                            <abp-card>
-                                                <abp-card-body>
+                                    <abp-column size-md="_4" class="mb-2">
+                                        <abp-card>
+                                            <abp-card-body>
 
-                                                    @if (!application.LogoUri.IsNullOrEmpty())
-                                                    {
-                                                        <div class="mx-auto">
-                                                            <img src="@application.LogoUri" style="height:64px" class="mb-3"/>
-                                                        </div>
-                                                    }
-
-                                                    <h4>@application.DisplayName</h4>
-                                                    <span class="text-muted">@application.ClientUri</span>
-                                                    <div class="mt-1">
-                                                        <a abp-button="@Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Button.AbpButtonType.Outline_Secondary" href="@application.ClientUri">@L["Visit"]</a>
+                                                @if (!application.LogoUri.IsNullOrEmpty())
+                                                {
+                                                    <div class="mx-auto">
+                                                        <img src="@application.LogoUri" style="height:64px" class="mb-3" />
                                                     </div>
-                                                </abp-card-body>
-                                            </abp-card>
-                                        </abp-column>
-                                    }
+                                                }
+
+                                                <h4>@application.DisplayName</h4>
+                                                <span class="text-muted">@application.ClientUri</span>
+                                                <div class="mt-1">
+                                                    <a abp-button="Outline_Secondary" href="@application.ClientUri">@L["Visit"]</a>
+                                                </div>
+                                            </abp-card-body>
+                                        </abp-card>
+                                    </abp-column>
                                 }
+
                             </abp-row>
                         </div>
+
                     </abp-card-body>
+
                 </abp-card>
             </div>
+
         </abp-row>
     </div>
 </div>

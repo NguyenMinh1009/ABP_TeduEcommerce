@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeduEcommerce.Inventories;
-using TeduEcommerce.ProductAttributes;
 
 namespace TeduEcommerce.Inventories
 {
@@ -18,7 +17,7 @@ namespace TeduEcommerce.Inventories
             builder.HasKey(x => x.Id);
             builder.Property(x => x.SKU)
                 .HasMaxLength(50)
-                .IsUnicode(false) // kieu varchar, ko dac biet
+                .IsUnicode(false)
                 .IsRequired();
 
             builder.Property(x => x.StockQuantity)

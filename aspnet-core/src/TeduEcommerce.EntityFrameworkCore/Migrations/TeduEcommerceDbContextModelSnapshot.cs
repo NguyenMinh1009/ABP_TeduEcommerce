@@ -433,7 +433,7 @@ namespace TeduEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppAttributes", (string)null);
+                    b.ToTable("AppProductAttributes", (string)null);
                 });
 
             modelBuilder.Entity("TeduEcommerce.ProductCategories.ProductCategory", b =>
@@ -568,6 +568,12 @@ namespace TeduEcommerce.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
+
                     b.Property<int>("SortOrder")
                         .HasColumnType("int");
 
@@ -575,7 +581,7 @@ namespace TeduEcommerce.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<bool>("Visibility")
+                    b.Property<bool>("Visiblity")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -594,7 +600,7 @@ namespace TeduEcommerce.Migrations
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Value")
+                    b.Property<DateTime?>("Value")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -613,7 +619,7 @@ namespace TeduEcommerce.Migrations
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("Value")
+                    b.Property<decimal?>("Value")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -632,7 +638,7 @@ namespace TeduEcommerce.Migrations
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Value")
+                    b.Property<int?>("Value")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -836,7 +842,6 @@ namespace TeduEcommerce.Migrations
             modelBuilder.Entity("TeduEcommerce.Promotions.PromotionCategory", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CategoryId")

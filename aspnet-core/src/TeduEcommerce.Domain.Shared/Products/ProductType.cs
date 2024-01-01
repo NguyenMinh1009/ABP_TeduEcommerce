@@ -12,5 +12,6 @@ namespace TeduEcommerce.Products
         Bundle,
         Virtual,
         Downloadable,
+        
     }
 }

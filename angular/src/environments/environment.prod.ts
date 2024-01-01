@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44358/',
+    issuer: 'https://localhost:44339/',
     redirectUri: baseUrl,
     clientId: 'TeduEcommerce_App',
     responseType: 'code',
@@ -19,7 +19,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://localhost:44396',
+      url: 'https://localhost:44351',
       rootNamespace: 'TeduEcommerce',
     },
   },
