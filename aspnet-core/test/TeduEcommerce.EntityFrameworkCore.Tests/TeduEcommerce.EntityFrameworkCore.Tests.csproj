@@ -3,15 +3,14 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>TeduEcommerce</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\TeduEcommerce.EntityFrameworkCore\TeduEcommerce.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\TeduEcommerce.TestBase\TeduEcommerce.TestBase.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="7.4.1" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

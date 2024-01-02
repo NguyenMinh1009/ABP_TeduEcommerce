@@ -40,11 +40,6 @@ public class Program
         }
         catch (Exception ex)
         {
-            if (ex is HostAbortedException)
-            {
-                throw;
-            }
-
             Log.Fatal(ex, "TeduEcommerce.AuthServer terminated unexpectedly!");
             return 1;
         }

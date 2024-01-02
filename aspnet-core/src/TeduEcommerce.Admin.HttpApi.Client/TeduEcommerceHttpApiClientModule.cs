@@ -31,7 +31,7 @@ public class TeduEcommerceAdminHttpApiClientModule : AbpModule
         );
 
         Configure<AbpVirtualFileSystemOptions>(options =>
-        {   
+        {
             options.FileSets.AddEmbedded<TeduEcommerceAdminHttpApiClientModule>();
         });
     }

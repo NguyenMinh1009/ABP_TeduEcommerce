@@ -7,7 +7,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace TeduEcommerce.Orders
 {
-    public class OrderItem : Entity
+    public class OrderItem: Entity
     {
         public Guid OrderId { get; set; }
         public Guid ProductId { get; set; }
@@ -20,5 +20,4 @@ namespace TeduEcommerce.Orders
             return new object[] { OrderId, ProductId };
         }
     }
-}
 }

@@ -25,7 +25,7 @@ public static class TeduEcommerceModuleExtensionConfigurator
          *
          * Example: Change user and role name max lengths
 
-           AbpUserConsts.MaxNameLength = 99;
+           IdentityUserConsts.MaxNameLength = 99;
            IdentityRoleConsts.MaxNameLength = 99;
 
          * Notice: It is not suggested to change property lengths
